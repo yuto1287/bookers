@@ -1,23 +1,26 @@
 <h1>Books</h1>
-<% @books.each do |book| %>
-
-  <table>
+<table>
     <thead>
-      <th>Title</th>
+      <tr>
+        <th>Title</th>
 
-      <th>Body</th>
+        <th>Body</th>
 
-      <th colspan="3">
+        <th colspan="3"></th>
 
-      </th>
+      </tr>
     </thead>
+
+</table>
+<% @books.each do |book| %>
+  <table>
     <span><%= book.title %></span>
     <span><%= book.body %></span>
-    <span><%= link_to　Show, "/books/#{book.id}" %></span>
-    <span><%= link_to Edit, "books/#{book.id}/edit" %></span>
-
+    <span><%= link_to 'Show', "/books/#{book.id}" %></span>
+    <span><%= link_to 'Edit', "/books/#{book.id}/edit" %></span>
+    <span><%= link_to 'Destroy', destroy_book_path(@book.id), method: :delete, "deta-confirm" => "本当に削除しますか？" %></span>
   </table>
-<% end %>
+  <% end %>
 
 <h2>New book</h2>
 <%= form_with model: @book do |f| %>
